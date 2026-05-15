@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eu & Thainá 💖</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #2d1b2e, #0f0f0f);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .title {
+      font-size: 3.5em;
+      color: #ff69b4;
+      text-shadow: 0 0 20px rgba(255,105,180,0.8);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.4em;
+      color: #ffb6d9;
+      margin-bottom: 30px;
+    }
+
+    .timer-box {
+      margin: 30px auto;
+      padding: 25px;
+      border: 2px solid #ff69b4;
+      border-radius: 20px;
+      background: rgba(255,105,180,0.08);
+      box-shadow: 0 0 20px rgba(255,105,180,0.3);
+      max-width: 700px;
+    }
+
+    #timer {
+      font-size: 2em;
+      font-weight: bold;
+      color: #ff69b4;
+      margin-top: 15px;
+    }
+
+    .carousel-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 3px solid #ff69b4;
+      box-shadow: 0 0 25px rgba(255,105,180,0.4);
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 1s ease-in-out;
+    }
+
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+      height: 500px;
+      object-fit: cover;
+    }
+
+    .message {
+      margin: 40px auto;
+      padding: 25px;
+      max-width: 800px;
+      background: rgba(255,105,180,0.08);
+      border-radius: 20px;
+      border: 2px solid #ff69b4;
+      color: #ffd6ea;
+      font-size: 1.3em;
+      line-height: 1.8;
+    }
+
+    .spotify {
+      margin: 40px auto;
+      max-width: 700px;
+    }
+
+    .button {
+      margin-top: 30px;
+      padding: 18px 35px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #ff69b4, #ff1493);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255,105,180,0.5);
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      transform: scale(1.08);
+    }
+
+    .timeline {
+      margin: 60px auto;
+      max-width: 900px;
+      text-align: left;
+    }
+
+    .timeline-item {
+      margin: 20px 0;
+      padding: 20px;
+      border-left: 4px solid #ff69b4;
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+    }
+
+    .floating-heart {
+      position: fixed;
+      color: #ff69b4;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    @media(max-width:768px) {
+      .title { font-size: 2.2em; }
+      #timer { font-size: 1.2em; }
+      .carousel img { height: 300px; }
+      .message { font-size: 1em; }
+    }
+  
+    .floating-kitty {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      pointer-events: none;
+      z-index: 1;
+      will-change: transform;
+    }
+
+    .floating-kitty img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 15px rgba(255,105,180,0.6));
+      animation: kittySpin 4s ease-in-out infinite;
+    }
+
+    @keyframes kittySpin {
+      0%,100% { transform: rotate(-10deg) scale(1); }
+      50% { transform: rotate(10deg) scale(1.12); }
+    }
+
+    .floating-kitty:nth-child(1) { animation: floatPath1 12s ease-in-out infinite; }
+    .floating-kitty:nth-child(2) { animation: floatPath2 15s ease-in-out infinite; }
+    .floating-kitty:nth-child(3) { animation: floatPath3 18s ease-in-out infinite; }
+    .floating-kitty:nth-child(4) { animation: floatPath4 14s ease-in-out infinite; }
+    .floating-kitty:nth-child(5) { animation: floatPath5 16s ease-in-out infinite; }
+    .floating-kitty:nth-child(6) { animation: floatPath6 13s ease-in-out infinite; }
+
+    @keyframes floatPath1 {
+      0% { left: 5%; top: 10%; }
+      25% { left: 85%; top: 25%; }
+      50% { left: 75%; top: 75%; }
+      75% { left: 15%; top: 60%; }
+      100% { left: 5%; top: 10%; }
+    }
+
+    @keyframes floatPath2 {
+      0% { left: 90%; top: 15%; }
+      25% { left: 20%; top: 40%; }
+      50% { left: 10%; top: 80%; }
+      75% { left: 80%; top: 50%; }
+      100% { left: 90%; top: 15%; }
+    }
+
+    @keyframes floatPath3 {
+      0% { left: 50%; top: 5%; }
+      25% { left: 10%; top: 35%; }
+      50% { left: 85%; top: 60%; }
+      75% { left: 40%; top: 85%; }
+      100% { left: 50%; top: 5%; }
+    }
+
+    @keyframes floatPath4 {
+      0% { left: 15%; top: 80%; }
+      25% { left: 75%; top: 20%; }
+      50% { left: 25%; top: 15%; }
+      75% { left: 85%; top: 70%; }
+      100% { left: 15%; top: 80%; }
+    }
+
+    @keyframes floatPath5 {
+      0% { left: 70%; top: 85%; }
+      25% { left: 30%; top: 25%; }
+      50% { left: 90%; top: 45%; }
+      75% { left: 20%; top: 70%; }
+      100% { left: 70%; top: 85%; }
+    }
+
+    @keyframes floatPath6 {
+      0% { left: 40%; top: 90%; }
+      25% { left: 85%; top: 35%; }
+      50% { left: 15%; top: 50%; }
+      75% { left: 60%; top: 20%; }
+      100% { left: 40%; top: 90%; }
+    }
+
+</style>
+</head>
+<body>
+
+<div class="floating-kitty"><img src="https://i.imgur.com/u18w5Gj.png" alt="Hello Kitty"></div>
+<div class="floating-kitty"><img src="https://i.imgur.com/u18w5Gj.png" alt="Hello Kitty"></div>
+<div class="floating-kitty"><img src="https://i.imgur.com/u18w5Gj.png" alt="Hello Kitty"></div>
+<div class="floating-kitty"><img src="https://i.imgur.com/u18w5Gj.png" alt="Hello Kitty"></div>
+<div class="floating-kitty"><img src="https://i.imgur.com/u18w5Gj.png" alt="Hello Kitty"></div>
+<div class="floating-kitty"><img src="https://i.imgur.com/u18w5Gj.png" alt="Hello Kitty"></div>
+
+<div class="container">
+  <h1 class="title">💖 Eu & Thainá 💖</h1>
+  <p class="subtitle">Cada segundo ao seu lado vale ouro ✨</p>
+
+  <div class="timer-box">
+    <h2>⏳ Estamos juntos há:</h2>
+    <div id="timer"></div>
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel" id="carousel">
+      <img src="https://i.imgur.com/nejxeVH.jpeg">
+      <img src="https://i.imgur.com/lTiJ0j0.jpeg" alt="Foto 2">
+      <img src="https://i.imgur.com/31yyc5V.jpeg" alt="Foto 3">
+    </div>
+  </div>
+
+  <div class="message">
+    <p>Desde que você entrou na minha vida, tudo ficou mais bonito.</p>
+    <p>Você é minha melhor escolha, meu melhor presente e minha paz. ❤️</p>
+    <p>Nosso amor cresce a cada dia, e eu escolheria você em todas as vidas.</p>
+  </div>
+
+  <div class="spotify">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/intl-pt/track/5WeugHI2cHZjF6bXiryNz7?si=28e8f076bbe04006" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </div>
+
+  <button class="button" onclick="scrollToTimeline()">💌 Nossa História 💌</button>
+
+  <div class="timeline" id="timeline">
+    <div class="timeline-item">
+      <h3>🌸 Primeiro encontro</h3>
+      <p>O dia em que tudo começou e minha vida mudou.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>💋 Primeiro beijo</h3>
+      <p>Um momento inesquecível que guardo com carinho.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>❤️ Hoje</h3>
+      <p>E continuamos escrevendo nossa história juntos.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // DATA DE INÍCIO DO RELACIONAMENTO
+  const startDate = new Date("2024-01-01T00:00:00");
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const years = 0;
+    const months = 5;
+    const days = 8;
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("timer").innerHTML =
+      `${years} anos, ${months} meses, ${days} dias<br>${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  setInterval(updateTimer, 1000);
+  updateTimer();
+
+  // CARROSSEL AUTOMÁTICO
+  const carousel = document.getElementById('carousel');
+  const slides = document.querySelectorAll('.carousel img');
+  let index = 0;
+
+  function nextSlide() {
+    index++;
+    if (index >= slides.length) index = 0;
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  setInterval(nextSlide, 4000);
+
+  // CORAÇÕES FLUTUANTES
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    heart.innerHTML = '💖';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 600);
+
+  function scrollToTimeline() {
+    document.getElementById('timeline').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
